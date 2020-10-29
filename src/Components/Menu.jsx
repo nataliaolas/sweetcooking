@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "bold"
     },
 }));
+
 export default function Menus() {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
