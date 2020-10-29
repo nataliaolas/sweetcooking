@@ -1,26 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import {
+  Container,
+} from '@material-ui/core';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './Components/Home';
+import Menus from './Components/Menu';
+import AboutUS from './Components/AboutUS';
+import Map from './Components/Map';
+import Gallery from './Components/Gallery';
+import Layout from './Components/Layout';
+import {
+  home,
+  aboutus,
+  gallery,
+  menu,
+  location
+} from "./common/routes.js";
 
-function App() {
+const useStyles = makeStyles((theme) => ({
+ 
+  footer: {
+    textAlign: "center"
+  }
+}));
+
+export default function AppBars() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Layout />
+        <Container>
+          <Switch>
+            <Route path={home} component={Home} />
+            <Route path={aboutus} component={AboutUS} />
+            <Route path={menu} component={Menus} />
+            <Route path={gallery} component={Gallery} />
+            <Route path={location} component={Map} />
+          </Switch>
+        </Container>
+        <footer className={classes.footer}>@natalia olas</footer>
+      </div>
+    </Router>
   );
 }
-
-export default App;
